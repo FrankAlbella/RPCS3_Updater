@@ -60,9 +60,11 @@ namespace RPCS3_Updater
         {
             RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\7zFM.exe");
 
-            DirectoryInfo.zFilePath = key.GetValue("").ToString();
+            string path = key.GetValue("Path").ToString() + "7z.exe";
 
-            return key.GetValue("").ToString();
+            DirectoryInfo.zFilePath = path;
+
+            return path;
         }
 
         private static void ExitWithError(string error)
