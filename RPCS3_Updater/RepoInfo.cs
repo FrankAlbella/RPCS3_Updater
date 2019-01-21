@@ -35,7 +35,7 @@ namespace RPCS3_Updater
 
         public static string GetLatestVersion()
         {
-            return LatestRelease.Name;
+            return 'v' + LatestRelease.Name;
         }
 
         public static string GetDownloadUrl()
