@@ -14,4 +14,4 @@ An application to automatically keep the [RPCS3 emulator](https://rpcs3.net/) up
 
 ## How to Use
 * Place or extract RPCS3_Updater.exe and Octokit.dll to the same directory as rpcs3.exe
-* Run RPCS3_Updatzer
+* Run RPCS3_Updater
