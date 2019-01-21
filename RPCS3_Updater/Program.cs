@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace RPCS3_Updater
 {
@@ -47,14 +48,21 @@ namespace RPCS3_Updater
 
         private static void CheckPrerequisites()
         {
-            // TODO: use registry key info to detect 7zip install.
-            // Registry key path: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\7zFM.exe
-            if (!File.Exists(DirectoryInfo.zFilePath))
+            if (!File.Exists(GetZFileInstallPath()))
                 ExitWithError("7zip installation not detected");
 
             if (Process.GetProcessesByName("rpcs3").Length != 0)
                 ExitWithError("RPCS3 instance is running");
 
+        }
+
+        private static string GetZFileInstallPath()
+        {
+            RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\7zFM.exe");
+
+            DirectoryInfo.zFilePath = key.GetValue("").ToString();
+
+            return key.GetValue("").ToString();
         }
 
         private static void ExitWithError(string error)

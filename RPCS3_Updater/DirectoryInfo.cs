@@ -7,6 +7,6 @@
         public static readonly string tempFilePath = tempDirPath + @"emu.7z";
         public static readonly string verFilePath = currentDirPath + @"\RPCS3.log";
         public static readonly string emuDirPath = currentDirPath + @"\rpcs3.exe";
-        public static readonly string zFilePath = @"C:\Program Files\7-Zip\7z.exe";
+        public static string zFilePath = @"C:\Program Files\7-Zip\7z.exe";
     }
 }
