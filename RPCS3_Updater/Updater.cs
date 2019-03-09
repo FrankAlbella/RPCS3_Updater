@@ -13,6 +13,9 @@ namespace RPCS3_Updater
         private byte progressRow = 0;
         private byte percentage = 0;
 
+        private const byte progressBarMaxWidth = 20;
+        private const byte progressBarInterval = 100 / progressBarMaxWidth; // ex. 100/20 = 5. Every 5 percent, increment the progress bar.
+
         public Updater(Emulator emu)
         {
             this.client = new WebClient();
@@ -54,8 +57,8 @@ namespace RPCS3_Updater
             Console.SetCursorPosition(0, progressRow);
 
             Console.Write("[");
-            Console.Write(new string('#', e.ProgressPercentage / 5));
-            Console.Write(new string(' ', 20 - (e.ProgressPercentage / 5)));
+            Console.Write(new string('#', e.ProgressPercentage / progressBarInterval));
+            Console.Write(new string(' ', progressBarMaxWidth - (e.ProgressPercentage / progressBarInterval)));
             Console.Write("] {0}%", e.ProgressPercentage);
         }
 
