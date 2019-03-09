@@ -6,7 +6,6 @@ namespace RPCS3_Updater
 {
     class Emulator
     {
-        private const string verUrl = "https://rpcs3.net/download";
         private readonly Uri downloadUrl;
         private readonly string latestVer;
         private readonly string currentVer;
